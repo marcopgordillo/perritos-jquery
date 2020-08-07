@@ -1,46 +1,61 @@
-$.noConflict();
-jQuery(document).ready(function ($) {
-  const inputRange = $("#input-range"),
-    inputNumber = $("#input-number"),
-    dogs = $(".js-dog");
+(function () {
+  const inputRange = document.getElementById('input-range'),
+        inputNumber = document.getElementById('input-number'),
+        dogs = document.getElementsByClassName('js-dog');
 
   let oldVal = 0;
 
-  // click dogs
-  dogs.click(function () {
-    const id = $(this).attr('id').split('-')[1];
-    oldVal = id * 10;
-    activeClass(oldVal);
-    inputRange.val(oldVal);
-    inputNumber.val(oldVal);
-  });
 
-  // Change input range
-  inputRange.change(function () {
-    const newVal = +$(this).val();
-    inputNumber.val(newVal);
-    if (!isEqual(newVal)) {
-      oldVal = newVal;
-      activeClass(oldVal);
-    }
-  });
-
-  // Change input number
-  inputNumber.change(function () {
-    const newVal = +$(this).val();
-    inputRange.val(newVal);
-    if (!isEqual(newVal)) {
-      oldVal = newVal;
-      activeClass(oldVal);
-    }
-  });
+  function activeClass(val) {
+    Array.from(dogs).forEach(dog => dog.classList.remove('text-danger'));
+    document.getElementById(`dog-${Math.floor(val / 10)}`).classList.add('text-danger');
+  }
 
   function isEqual(newVal) {
     return Math.floor(oldVal / 10) === Math.floor(newVal / 10);
   }
 
-  function activeClass(val) {
-    dogs.removeClass("text-danger");
-    $(`#dog-${Math.floor(val / 10)}`).addClass("text-danger");
+  // click dogs
+  function handleDog(evt) {
+    evt.stopPropagation();
+    const id = evt
+                .currentTarget.getAttributeNode('id').value
+                .split('-')[1];
+
+    oldVal = id * 10;
+
+    activeClass(oldVal);
+    inputRange.value = oldVal;
+    inputNumber.value = oldVal;
   }
-});
+
+  // Change input range
+  function handleInputRange(evt) {
+    const newVal = evt.currentTarget.value;
+    inputNumber.value = newVal;
+    
+    if (!isEqual(newVal)) {
+      oldVal = newVal;
+      activeClass(oldVal);
+    }
+  }
+
+  // Change input Number
+  function handleInputNumber(evt) {
+    const newVal = evt.currentTarget.value;
+    inputRange.value = newVal;
+
+    if (!isEqual(newVal)) {
+      oldVal = newVal;
+      activeClass(oldVal);
+    }
+  }
+
+  function addListeners() {
+    Array.from(dogs).forEach(dog => dog.addEventListener('click', handleDog, true));
+    inputRange.addEventListener('change', handleInputRange);
+    inputNumber.addEventListener('change', handleInputNumber);
+  }
+
+  document.addEventListener('DOMContentLoaded', addListeners);
+})();
