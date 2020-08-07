@@ -1,30 +1,46 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
-  const weight = $("#weight");
-  const weightInput = $("#weight-input");
+  const inputRange = $("#weight");
+  const inputNumber = $("#weight-input");
+  const dogs = $(".js-dog");
+  let oldVal = 0;
 
-  $("#list>li").click(function () {
+  // click dogs
+  dogs.click(function () {
     const id = $(this).data("id");
-    activeClass(id * 10);
-    weight.val(id * 10);
-    weightInput.val(id * 10);
+    oldVal = id * 10;
+    activeClass(oldVal);
+    inputRange.val(oldVal);
+    inputNumber.val(oldVal);
   });
 
-  weight.change(function () {
-    const val = $(this).val();
-    weightInput.val(val);
-    console.log(val);
-    activeClass(val);
+  // Change input range
+  inputRange.change(function () {
+    const newVal = $(this).val();
+    inputNumber.val(newVal);
+    if (!isEqual(newVal)) {
+      oldVal = newVal;
+      activeClass(oldVal);
+    }
   });
 
-  weightInput.change(function () {
-    const val = $(this).val();
-    weight.val(val);
-    activeClass(val);
+  // Change input number
+  inputNumber.change(function () {
+    const newVal = $(this).val();
+    inputRange.val(newVal);
+    if (!isEqual(newVal)) {
+      oldVal = newVal;
+      activeClass(oldVal);
+    }
   });
+
+  function isEqual(newVal) {
+    return Math.floor(oldVal / 10) === +Math.floor(newVal / 10);
+  }
 
   function activeClass(val) {
-    $("#list>li").removeClass("text-danger");
+    console.log(val);
+    dogs.removeClass("text-danger");
     $(`#dog-${Math.floor(val / 10)}`).addClass("text-danger");
   }
 });
