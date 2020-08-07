@@ -7,3 +7,5 @@ ul {
 ul > li {
   display: inline-block;
 }
+
+.icon { overflow:visible; height:1em; width:1em; fill:currentColor; }
