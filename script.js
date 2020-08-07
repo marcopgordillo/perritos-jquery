@@ -1,14 +1,15 @@
 $.noConflict();
 jQuery(document).ready(function ($) {
-  const inputRange = $("#weight"),
-    inputNumber = $("#weight-input"),
+  const inputRange = $("#input-range"),
+    inputNumber = $("#input-number"),
     dogs = $(".js-dog");
 
   let oldVal = 0;
 
   // click dogs
   dogs.click(function () {
-    oldVal = $(this).data("id") * 10;
+    const id = $(this).attr('id').split('-')[1];
+    oldVal = id * 10;
     activeClass(oldVal);
     inputRange.val(oldVal);
     inputNumber.val(oldVal);

@@ -26,76 +26,83 @@
           <h1>Perritos</h1>
 
           <div class="dogs">
-            <ul id="list" class="ml-3">
+            <ul id="list">
               <li>
-                <button
-                  id="dog-0"
-                  class="js-dog btn text-danger text-center"
-                  data-id="0"
-                >
-                  <svg class="bi icon" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#heart-fill" />
+                <button id="dog-0" class="js-dog btn text-danger">
+                  <svg class="bi icon" aria-hidden="true">
+                    <title>Baby dog</title>
+                    <use xlink:href="bootstrap-icons.svg#emoji-angry" />
                   </svg>
                   <div>0 - 9</div>
                 </button>
               </li>
               <li>
-                <button id="dog-1" class="js-dog btn text-center" data-id="1">
-                  <svg class="bi" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#heart-fill" />
+                <button id="dog-1" class="js-dog btn">
+                  <svg class="bi icon" aria-hidden="true">
+                    <use xlink:href="bootstrap-icons.svg#emoji-dizzy" />
                   </svg>
                   <div>10 - 19</div>
                 </button>
               </li>
               <li>
-                <button id="dog-2" class="js-dog btn text-center" data-id="2">
-                  <svg class="bi" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#heart-fill" />
+                <button id="dog-2" class="js-dog btn">
+                  <svg class="bi icon" aria-hidden="true">
+                    <use xlink:href="bootstrap-icons.svg#emoji-neutral" />
                   </svg>
                   <div>20 - 29</div>
                 </button>
               </li>
               <li>
-                <button id="dog-3" class="js-dog btn text-center" data-id="3">
-                  <svg class="bi" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#heart-fill" />
+                <button id="dog-3" class="js-dog btn">
+                  <svg class="bi icon" aria-hidden="true">
+                    <use xlink:href="bootstrap-icons.svg#emoji-smile-upside-down" />
                   </svg>
                   <div>30 - 39</div>
                 </button>
               </li>
               <li>
-                <button id="dog-4" class="js-dog btn text-center" data-id="4">
-                  <svg class="bi" width="32" height="32" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#heart-fill" />
+                <button id="dog-4" class="js-dog btn">
+                  <svg class="bi icon" aria-hidden="true">
+                    <use xlink:href="bootstrap-icons.svg#emoji-smile" />
                   </svg>
                   <div>40 - 49</div>
                 </button>
               </li>
-            </ul>
+            </ul><!-- #list -->
 
-            <div class="m-3">
-              <input
-                type="range"
-                name="weight"
-                id="weight"
-                min="0"
-                max="49"
-                value="0"
-              />
-              <input
-                type="number"
-                style="width: 50px;"
-                id="weight-input"
-                min="0"
-                max="49"
-                value="0"
-              />
-              <span>Kg</span>
+            <div class="row m-3">
+              <div class="col-8">
+                <div class="range form-row align-items-center">
+                  <div class="col-9">
+                    <input
+                      class="custom-range"
+                      type="range"
+                      id="input-range"
+                      min="0"
+                      max="49"
+                      value="0"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      class="form-control form-control-lg"
+                      style="display: inline-block;"
+                      type="number"
+                      id="input-number"
+                      min="0"
+                      max="49"
+                      value="0"
+                    />
+                    <span>Kg</span>
+                  </div>
+                </div><!-- .range -->
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+          </div><!-- .dogs -->
+        </div><!-- .col -->
+      </div><!-- .row -->
+    </div><!-- .container -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

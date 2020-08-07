@@ -8,4 +8,17 @@ ul > li {
   display: inline-block;
 }
 
-.icon { overflow:visible; height:1em; width:1em; fill:currentColor; }
+#input-number {
+  width: 5.5rem;
+}
+
+.icon {
+  overflow: visible;
+  height: 5em;
+  width: 5em;
+  fill: currentColor;
+}
+
+.js-dog:focus {
+  box-shadow: none;
+}
