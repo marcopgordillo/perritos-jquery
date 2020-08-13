@@ -8,9 +8,20 @@ function dogs() {
       $event.target.checked = true;
     },
     handleInit() {
-      this.$watch('index', index =>
-        Array.from(document.getElementsByClassName('js-dog')).forEach(dog => dog.id === `dog-${index}` ? dog.checked = true : dog.checked = false)
-      );
+      this.$watch('index', index => {        
+        Array.from(document.getElementById('list').children).forEach(li => {
+          let input = li.getElementsByTagName('input')[0];
+
+          if (input.id === `dog-${index}`) {
+            input.setAttribute('checked', 'checked');
+            input.checked = true;
+          } else {
+            input.checked = false;
+            input.removeAttribute('checked');
+          }
+        });  
+      });
+
       this.$watch('value', value =>{
         this.index = normalize(value);
       });
