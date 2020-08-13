@@ -20,53 +20,54 @@
         <div class="col">
           <h1>Perritos</h1>
 
-          <div class="dogs">
+          <div class="dogs" x-data="dogs()" x-init="handleInit">
+            <input type="hidden" name="weight" :value="value">
             <ul id="list">
               <li class="form-check form-check-inline text-center">
-                <label for="dog-0" class="form-check-label text-danger d-block">
+                <label for="dog-0" class="form-check-label d-block" :class="{ 'text-danger': index === 0 }">
                   <svg class="bi icon" aria-hidden="true">
                     <title>Baby dog</title>
                     <use xlink:href="bootstrap-icons.svg#emoji-angry" />
                   </svg>
                   <div>0 - 4.9 Kg</div>
                 </label>
-                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-0" checked>
+                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-0" @click="handleDog" checked>
               </li>
               <li class="form-check form-check-inline text-center">
-                <label for="dog-1" class="form-check-label d-block">
+                <label for="dog-1" class="form-check-label d-block" :class="{ 'text-danger': index === 1 }">
                   <svg class="bi icon" aria-hidden="true">
                     <use xlink:href="bootstrap-icons.svg#emoji-dizzy" />
                   </svg>
                   <div>5 - 9.9 Kg</div>
                 </label>
-                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-1">
+                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-1" @click="handleDog">
               </li>
               <li class="form-check form-check-inline text-center">
-                <label for="dog-2" class="form-check-label d-block">
+                <label for="dog-2" class="form-check-label d-block" :class="{ 'text-danger': index === 2 }">
                   <svg class="bi icon" aria-hidden="true">
                     <use xlink:href="bootstrap-icons.svg#emoji-neutral" />
                   </svg>
                   <div>10 - 24.9 Kg</div>
                 </label>
-                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-2">
+                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-2" @click="handleDog">
               </li>
               <li class="form-check form-check-inline text-center">
-                <label for="dog-3" class="form-check-label d-block">
+                <label for="dog-3" class="form-check-label d-block" :class="{ 'text-danger': index === 3 }">
                   <svg class="bi icon" aria-hidden="true">
                     <use xlink:href="bootstrap-icons.svg#emoji-smile-upside-down" />
                   </svg>
                   <div>25 - 39.9 Kg</div>
                 </label>
-                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-3">
+                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-3" @click="handleDog">
               </li>
               <li class="form-check form-check-inline text-center">
-                <label for="dog-4" class="form-check-label d-block">
+                <label for="dog-4" class="form-check-label d-block" :class="{ 'text-danger': index === 4 }">
                   <svg class="bi icon" aria-hidden="true">
                     <use xlink:href="bootstrap-icons.svg#emoji-smile" />
                   </svg>
                   <div>40 - 89 Kg</div>
                 </label>
-                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-4">
+                <input class="js-dog form-check-input ml-0 mt-2 float-none" type="checkbox" name="dogs" id="dog-4" @click="handleDog">
               </li>
             </ul><!-- #list -->
 
@@ -80,7 +81,7 @@
                       id="input-range"
                       min="0"
                       max="89"
-                      value="0"
+                      x-model="value"
                     />
                   </div>
                   <div class="col-auto">
@@ -91,7 +92,7 @@
                       id="input-number"
                       min="0"
                       max="89"
-                      value="0"
+                      x-model='value'
                     />
                     <span>Kg</span>
                   </div>
@@ -108,6 +109,7 @@
     <!-- Popper.js first, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
