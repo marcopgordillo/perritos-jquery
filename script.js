@@ -7,8 +7,15 @@
 
 
   function activeClass(val) {
-    Array.from(dogs).forEach(dog => dog.classList.remove('text-danger'));
-    document.getElementById(`dog-${Math.floor(val / 10)}`).classList.add('text-danger');
+    const elementId = `dog-${Math.floor(val / 10)}`;
+    let labels = Array.from(document.getElementsByTagName('label'));
+    
+    labels.forEach(label => label.classList.remove('text-danger'));
+    
+    labels.filter(label => label.htmlFor === elementId)[0].classList.add('text-danger');
+  
+    Array.from(dogs)
+          .forEach(dog => dog.id === elementId ? dog.checked = true : dog.checked = false);
   }
 
   function isEqual(newVal) {
