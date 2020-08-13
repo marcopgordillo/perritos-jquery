@@ -7,7 +7,7 @@
 
 
   function activeClass(val) {
-    const elementId = `dog-${Math.floor(val / 10)}`;
+    const elementId = `dog-${val}`;
     let labels = Array.from(document.getElementsByTagName('label'));
     
     labels.forEach(label => label.classList.remove('text-danger'));
@@ -19,7 +19,41 @@
   }
 
   function isEqual(newVal) {
-    return Math.floor(oldVal / 10) === Math.floor(newVal / 10);
+    return oldVal === normalize(newVal);
+  }
+
+  function normalize(val) {
+    if (val < 5) {
+      return 0;
+    } else if (val < 10) {
+      return 1;
+    } else if (val < 25) {
+      return 2;
+    } else if (val < 40) {
+      return 3;
+    } else {
+      return 4;
+    }
+  }
+
+  function deNormalize(val) {
+    switch(+val) {
+      case 0:
+        val = 0;
+        break;
+      case 1:
+        val = 5;
+        break;
+      case 2:
+        val = 10;
+        break;
+      case 3:
+        val = 25;
+        break;
+      default:
+        val = 40;
+    }
+    return val;
   }
 
   // click dogs
@@ -29,11 +63,12 @@
                 .currentTarget.getAttributeNode('id').value
                 .split('-')[1];
 
-    oldVal = id * 10;
+    oldVal = id;
 
     activeClass(oldVal);
-    inputRange.value = oldVal;
-    inputNumber.value = oldVal;
+    const realValue = deNormalize(oldVal);
+    inputRange.value = realValue;
+    inputNumber.value = realValue;
   }
 
   // Change input range
@@ -42,7 +77,7 @@
     inputNumber.value = newVal;
     
     if (!isEqual(newVal)) {
-      oldVal = newVal;
+      oldVal = normalize(newVal);
       activeClass(oldVal);
     }
   }
@@ -53,7 +88,7 @@
     inputRange.value = newVal;
 
     if (!isEqual(newVal)) {
-      oldVal = newVal;
+      oldVal = normalize(newVal);
       activeClass(oldVal);
     }
   }
